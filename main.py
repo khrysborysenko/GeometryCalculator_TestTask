@@ -68,6 +68,12 @@ def main():
             if hasattr(shape, "side"):
                 print(f"Side: {shape.side}")
 
+            if hasattr(shape, "width"):
+                print(f"Width: {shape.width}")
+
+            if hasattr(shape, "height"):
+                print(f"Height: {shape.height}")
+
             if hasattr(shape, "position"):
                 print(f"Position: {shape.position}")
 

@@ -1,7 +1,9 @@
+from shapes.rectangle import Rectangle
 from shapes.square import Square
 
 shape_map = {
     "square": Square,
+    "rectangle": Rectangle,
 }
 
 def define_shape(line):
