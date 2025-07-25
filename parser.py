@@ -1,11 +1,13 @@
 from shapes.rectangle import Rectangle
 from shapes.square import Square
 from shapes.circle import Circle
+from shapes.triangle import Triangle
 
 shape_map = {
     "square": Square,
     "rectangle": Rectangle,
     "circle": Circle,
+    "triangle": Triangle,
 }
 
 def define_shape(line):
