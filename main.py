@@ -53,10 +53,8 @@ def main():
         print("No data found")
         return
 
-    for line in lines:   #temporary check
-        print(f"- {line}")
-
-
+    # for line in lines:   #temporary check
+    #     print(f"- {line}")
 
     for line in lines:
         shape = define_shape(line)
@@ -65,27 +63,25 @@ def main():
             print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
 
            #temporary check
-            if hasattr(shape, "side"):
-                print(f"Side: {shape.side}")
-
-            if hasattr(shape, "width"):
-                print(f"Width: {shape.width}")
-
-            if hasattr(shape, "height"):
-                print(f"Height: {shape.height}")
-
-            if hasattr(shape, "position"):
-                print(f"Position: {shape.position}")
-
-            if hasattr(shape, "coords"):
-                print(f"coords: {shape.coords}")
-
-            if hasattr(shape, "radius"):
-                print(f"Radius: {shape.radius}")
-
-            print("--------")
-
-
+            # if hasattr(shape, "side"):
+            #     print(f"Side: {shape.side}")
+            #
+            # if hasattr(shape, "width"):
+            #     print(f"Width: {shape.width}")
+            #
+            # if hasattr(shape, "height"):
+            #     print(f"Height: {shape.height}")
+            #
+            # if hasattr(shape, "position"):
+            #     print(f"Position: {shape.position}")
+            #
+            # if hasattr(shape, "coords"):
+            #     print(f"coords: {shape.coords}")
+            #
+            # if hasattr(shape, "radius"):
+            #     print(f"Radius: {shape.radius}")
+            #
+            # print("--------")
 
 if __name__ == "__main__":
     main()
