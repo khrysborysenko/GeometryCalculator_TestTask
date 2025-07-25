@@ -1,4 +1,6 @@
 import sys
+from parser import define_shape
+from utils import format_number
 
 DEFAULT_FILENAME = "GeometryCalculator_TestData.txt"
 
@@ -53,6 +55,31 @@ def main():
 
     for line in lines:   #temporary check
         print(f"- {line}")
+
+
+
+    for line in lines:
+        shape = define_shape(line)
+        if shape:
+            shape_type = type(shape).__name__
+            print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
+
+           #temporary check
+            if hasattr(shape, "side"):
+                print(f"Side: {shape.side}")
+
+            if hasattr(shape, "position"):
+                print(f"Position: {shape.position}")
+
+            if hasattr(shape, "coords"):
+                print(f"coords: {shape.coords}")
+
+            if hasattr(shape, "radius"):
+                print(f"Radius: {shape.radius}")
+
+            print("--------")
+
+
 
 if __name__ == "__main__":
     main()
