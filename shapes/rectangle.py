@@ -4,13 +4,11 @@ class Rectangle:
         self.x1, self.y1 = corner1
         self.x2, self.y2 = corner2
 
-    @property
-    def width(self):
-        return abs(self.x2 - self.x1)
+        if self.x1 == self.x2 or self.y1 == self.y2:
+            raise ValueError("Corners must be opposite, only axis-aligned rectangles are supported")
 
-    @property
-    def height(self):
-        return abs(self.y2 - self.y1)
+        self.width = abs(self.x2 - self.x1)
+        self.height = abs(self.y2 - self.y1)
 
     @property
     def perimeter(self):
@@ -33,17 +31,19 @@ class Rectangle:
                 try:
                     coords = (float(tokens[i+1]), float(tokens[i+2]))
                 except (IndexError, ValueError):
-                    raise ValueError(f"Invalid coordinates {token}")
+                    raise ValueError("Invalid coordinates")
 
-                if not corner1:
+                if corner1 is None:
                     corner1 = coords
-                else:
+                elif corner2 is None:
                     corner2 = coords
+                else:
+                    raise ValueError("Too many corners provided for Rectangle")
                 i +=3
             else:
                 i +=1
         if not all([corner1, corner2]):
-            raise ValueError(f"Invalid coordinates {tokens}")
+            raise ValueError("Rectangle requires exactly 2 corners")
 
         return cls(corner1, corner2)
 
