@@ -14,7 +14,7 @@ def define_shape(line):
     tokens = line.strip().split()
 
     if not tokens:
-        return ValueError("Empty input")
+        raise ValueError("Empty input")
 
     shape_type = tokens[0].lower()
 
