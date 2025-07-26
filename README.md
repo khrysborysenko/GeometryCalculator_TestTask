@@ -16,7 +16,8 @@ After running main.py, the user will be prompted to choose the input type (keybo
 
 <img width="448" height="491" alt="image" src="https://github.com/user-attachments/assets/0e48bff9-4388-4cd2-acec-bf102d7832ac" />
 
-When using the program, it is important to enter data in the correct form. Otherwise, the program may perceive it as invalid data (but you will be prompted to try entering again)
+When using the program, it is important to enter data in the correct form. Otherwise, the program may perceive it as invalid data and display an error explanation (but you will be prompted to try entering again).
+
 Examples of correct input: 
  - Square TopRight 1 1 Side 1
  - Rectangle TopRight 2 2 BottomLeft 1 1
