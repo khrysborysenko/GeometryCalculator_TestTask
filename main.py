@@ -45,8 +45,12 @@ def main():
             if not filename:
                 filename = DEFAULT_FILENAME
             print(f"Reading file {filename}")
-            lines = file_input(filename)
-            input_from_file = True
+            try:
+                lines = file_input(filename)
+                input_from_file = True
+            except FileNotFoundError:
+                print("File '{filename}' not found")
+                return
         else:
             print("Invalid input")
             return
