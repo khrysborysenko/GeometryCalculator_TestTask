@@ -27,11 +27,13 @@ def file_input(filename):
 
 
 def main():
+    input_from_file = False
 
     if len(sys.argv) > 1:
         filename = sys.argv[1]
         print("Reading file {filename}")
         lines = file_input(filename)
+        input_from_file = True
     else:
         print("Choose input type: \n1. Keyboard \n2. File")
         choice = input()
@@ -39,14 +41,14 @@ def main():
         if choice == "1":
             lines = standard_input()
         elif choice == "2":
-            print("OK")
             filename = input("Enter filename: ").strip()
             if not filename:
                 filename = DEFAULT_FILENAME
             print(f"Reading file {filename}")
             lines = file_input(filename)
+            input_from_file = True
         else:
-            print("Wrong input")
+            print("Invalid input")
             return
 
     if not lines:
@@ -55,12 +57,30 @@ def main():
 
     # for line in lines:   #temporary check
     #     print(f"- {line}")
-
-    for line in lines:
-        shape = define_shape(line)
-        if shape:
-            shape_type = type(shape).__name__
-            print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
+    if input_from_file:
+        for i, line in enumerate(lines, start=1):
+            try:
+                shape = define_shape(line)
+                if shape is None:
+                    raise ValueError("Unknown or invalid shape")
+                shape_type = type(shape).__name__
+                print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
+            except Exception as e:
+                print(f"Error in line {i}: {e}")
+    else:
+        for line in lines:
+            while True:
+                try:
+                    shape = define_shape(line)
+                    if shape is None:
+                        raise ValueError("Unknown or invalid shape")
+                    shape_type = type(shape).__name__
+                    print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
+                    break
+                except Exception as e:
+                    print(f"Error: {e}")
+                    print("Please try entering the line again:")
+                    line = input().strip()
 
            #temporary check
             # if hasattr(shape, "side"):

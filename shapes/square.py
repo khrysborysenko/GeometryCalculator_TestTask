@@ -2,6 +2,7 @@ class Square:
 
     def __init__(self, position, coords, side):
         self.position = position
+        self.position = position
         self.coords = coords
         self.side = side
 
@@ -25,16 +26,25 @@ class Square:
 
             if token in {'TopLeft', 'TopRight', 'BottomLeft', 'BottomRight'}:
                 position = token
-                coords = (float(tokens[i+1]), float(tokens[i+2]))
+                try:
+                    coords = (float(tokens[i+1]), float(tokens[i+2]))
+                except (IndexError, ValueError):
+                    raise ValueError("Invalid coordinates")
                 i += 3
             elif token == 'Side':
-                side = float(tokens[i+1])
+                try:
+                    side = float(tokens[i+1])
+                except (IndexError, ValueError):
+                    raise ValueError("Invalid side length")
                 i += 2
             else:
                 i += 1
 
-        if not all([position, coords, side]):
-            raise ValueError("Invalid data")
+        if position is None or coords is None or side is None:
+            raise ValueError("Invalid data: missing position, coordinates, or side")
+
+        if side <= 0:
+            raise ValueError("Side length must be positive")
 
         return cls(position=position, coords=coords, side=side)
 
