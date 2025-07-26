@@ -14,18 +14,16 @@ def define_shape(line):
     tokens = line.strip().split()
 
     if not tokens:
-        return None
+        return ValueError("Empty input")
 
     shape_type = tokens[0].lower()
 
     shape_class = shape_map.get(shape_type)
 
     if shape_class is None:
-        print("Unknown shape type {shape_type}")
-        return None
+        raise ValueError(f"Unknown shape type '{shape_type}'")
 
     try:
         return shape_class.from_tokens(tokens)
     except Exception as e:
-        print(f"Error in shape definition: {e}")
-        return None
+        raise ValueError(f"In shape '{shape_type}': {e}")

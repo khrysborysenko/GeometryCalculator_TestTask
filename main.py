@@ -55,8 +55,6 @@ def main():
         print("No data found")
         return
 
-    # for line in lines:   #temporary check
-    #     print(f"- {line}")
     if input_from_file:
         for i, line in enumerate(lines, start=1):
             try:
@@ -66,7 +64,7 @@ def main():
                 shape_type = type(shape).__name__
                 print(f"{shape_type} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}")
             except Exception as e:
-                print(f"Error in line {i}: {e}")
+                print(f"Error in line {i}. {e}")
     else:
         for line in lines:
             while True:
@@ -81,27 +79,6 @@ def main():
                     print(f"Error: {e}")
                     print("Please try entering the line again:")
                     line = input().strip()
-
-           #temporary check
-            # if hasattr(shape, "side"):
-            #     print(f"Side: {shape.side}")
-            #
-            # if hasattr(shape, "width"):
-            #     print(f"Width: {shape.width}")
-            #
-            # if hasattr(shape, "height"):
-            #     print(f"Height: {shape.height}")
-            #
-            # if hasattr(shape, "position"):
-            #     print(f"Position: {shape.position}")
-            #
-            # if hasattr(shape, "coords"):
-            #     print(f"coords: {shape.coords}")
-            #
-            # if hasattr(shape, "radius"):
-            #     print(f"Radius: {shape.radius}")
-            #
-            # print("--------")
 
 if __name__ == "__main__":
     main()
