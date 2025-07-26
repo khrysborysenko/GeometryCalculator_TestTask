@@ -3,14 +3,14 @@ from shapes.square import Square
 from shapes.circle import Circle
 from shapes.triangle import Triangle
 
-shape_map = {
+shape_map = {   #map of existing shapes
     "square": Square,
     "rectangle": Rectangle,
     "circle": Circle,
     "triangle": Triangle,
 }
 
-def define_shape(line):
+def define_shape(line):   #main parser that identifies the shape type
     tokens = line.strip().split()
 
     if not tokens:

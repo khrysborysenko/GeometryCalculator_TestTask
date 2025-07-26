@@ -2,7 +2,7 @@ import pytest
 from parser import define_shape
 from utils import format_number
 
-def test_parser_valid_input():
+def test_parser_valid_input():   #test expected outputs when entering valid data
     inputs = [
         "Square TopLeft 5 5 Side 3",
         "Rectangle TopRight 11 6 BottomLeft 1 1",
@@ -15,12 +15,12 @@ def test_parser_valid_input():
         "Circle Perimeter 31.42 Area 78.54",
         "Triangle Perimeter 12.85 Area 7.50"
     ]
-    for i, line in enumerate(inputs):
+    for i, line in enumerate(inputs):   #compare outputs
         shape = define_shape(line)
         result = f"{shape.__class__.__name__} Perimeter {format_number(shape.perimeter)} Area {format_number(shape.area)}"
         assert result == expected_outputs[i]
 
-def test_parser_invalid_input():
+def test_parser_invalid_input():   #test errors when entering invalid data
     inputs = [
         "",
         "Parallelogram TopRight 6 5",

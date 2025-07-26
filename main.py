@@ -4,7 +4,7 @@ from utils import format_number
 
 DEFAULT_FILENAME = "GeometryCalculator_TestData.txt"
 
-def standard_input():
+def standard_input():   #read lines from keyboard
     print("Enter the shapes")
     lines = []
     while True:
@@ -17,7 +17,7 @@ def standard_input():
             break
     return lines
 
-def file_input(filename):
+def file_input(filename):   #read lines from file
     try:
         with open(filename, 'r') as f:
             return [line.strip() for line in f if line.strip()]
@@ -26,10 +26,10 @@ def file_input(filename):
         return []
 
 
-def main():
+def main():   #choose input type or open default file, print results
     input_from_file = False
 
-    if len(sys.argv) > 1:
+    if len(sys.argv) > 1:   #check the arguments of running
         filename = sys.argv[1]
         print("Reading file {filename}")
         lines = file_input(filename)
@@ -42,7 +42,7 @@ def main():
             lines = standard_input()
         elif choice == "2":
             filename = input("Enter filename: ").strip()
-            if not filename:
+            if not filename:   #run default text file
                 filename = DEFAULT_FILENAME
             print(f"Reading file {filename}")
             try:
@@ -59,8 +59,8 @@ def main():
         print("No data found")
         return
 
-    if input_from_file:
-        for i, line in enumerate(lines, start=1):
+    if input_from_file:   #output of results and errors after input from file
+        for i, line in enumerate(lines, start=1):   #iterate rows to show in case of error
             try:
                 shape = define_shape(line)
                 if shape is None:
@@ -70,7 +70,7 @@ def main():
             except Exception as e:
                 print(f"Error in line {i}. {e}")
     else:
-        for line in lines:
+        for line in lines:   #output of results and errors after standard input
             while True:
                 try:
                     shape = define_shape(line)
