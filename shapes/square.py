@@ -1,18 +1,14 @@
-class Square:
+from shapes.rectangle import Rectangle
+
+
+class Square(Rectangle):
 
     def __init__(self, position, coords, side):   #initialize square
         self.position = position
-        self.position = position
         self.coords = coords
         self.side = side
-
-    @property
-    def perimeter(self):   #calculate the perimeter
-        return 4 * self.side
-
-    @property
-    def area(self):   #calculate the area
-        return self.side ** 2
+        self.width = side
+        self.height = side
 
     @classmethod
     def from_tokens(cls, tokens):
