@@ -7,12 +7,13 @@ class Polygon:
 
     @property
     def perimeter(self):
-        if len(self.points) == 2:
-            side_a = math.dist(self.points[0], self.points[1])
-            side_b = math.dist(self.points[1], self.points[0])
-            return side_a + side_b
-        elif len(self.points) == 3:
-            side_a = math.dist(self.points[0], self.points[1])
-            side_b = math.dist(self.points[1], self.points[2])
-            side_c = math.dist(self.points[2], self.points[0])
-            return side_a + side_b + side_c
+        i = 0
+        side = []
+        while i < len(self.points):
+            if i == (len(self.points) - 1):
+                side.append(math.dist(self.points[i], self.points[0]))
+                break
+            else:
+                side.append(math.dist(self.points[i], self.points[i+1]))
+                i += 1
+        return sum(side)

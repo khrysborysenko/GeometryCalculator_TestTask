@@ -13,3 +13,7 @@ def test_polygon_perimeter2():
 def test_polygon_triangle():
     p = Polygon([(0, 0), (0, 1), (1, 2)])
     assert math.isclose(p.perimeter, 4.65, rel_tol=1e-3)
+
+def test_polygon_square():
+    p = Polygon([(0, 0), (0, 1), (1, 1), (1, 0)])
+    assert p.perimeter == 4
